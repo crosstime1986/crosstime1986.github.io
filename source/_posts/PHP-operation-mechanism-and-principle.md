@@ -16,7 +16,9 @@ PHP是一种适用于web开发的动态语言。具体点说，就是一个用C�
 005语法简单灵活，没有太多规范。缺点导致风格混杂，但再差的程序员也不会写出太离谱危害全局的程序。
 ### 2. PHP的四层体系
 PHP的核心架构如下图：
-[![image.jpg](https://cdn.nlark.com/yuque/0/2024/png/671402/1705463491676-6170af6e-7190-4d26-bf6c-f0595c5aa220.png#averageHue=%23f7fbfc&clientId=uf32aeb61-f6ad-4&from=paste&id=u983965bb&originHeight=500&originWidth=476&originalType=url&ratio=1&rotation=0&showTitle=false&size=17794&status=done&style=none&taskId=u4a69fee1-9e69-48c3-9220-057214dca3f&title=)](https://link.juejin.cn/?target=https%3A%2F%2Fimg.duicode.com%2Fwp-content%2Fuploads%2F2018%2F01%2Fphp-001.png)
+![](assets/17116088205893.jpg)
+
+
 从图上可以看出，PHP从下到上是一个4层体系：
 Zend引擎：Zend整体用纯C实现，是PHP的内核部分，它将PHP代码翻译（词法、语法解析等一系列编译过程）为可执行opcode处理，并实现相应的处理方法，实现了基本的数据结构（如hashtable、oo）、内存分配及管理、提供了相应的api方法供外部调用，是一切的核心，所有的外围功能均围绕Zend实现。
 Extensions：围绕着Zend引擎，extensions通过组件式的方式提供各种基础服务，我们常见的各种内置函数（如array系列）、标准库等都是通过extension来实现，用户也可以根据需要实现自己的extension以达到功能扩展、性能优化等目的（如贴吧正在使用的PHP中间层、富文本解析就是extension的典型应用）。
@@ -30,7 +32,8 @@ cgi：这是webserver和PHP直接的另一种交互方式，也就是大名鼎�
 cli：命令行调用的应用模式
 ### 4. PHP的执行流程&opcode
 我们先来看看PHP代码的执行所经过的流程。
-[![image.jpg](https://cdn.nlark.com/yuque/0/2024/png/671402/1705463491697-a3bcbfee-7c23-4703-b83b-90b390af875f.png#averageHue=%23f2f2f0&clientId=uf32aeb61-f6ad-4&from=paste&id=uf5b43796&originHeight=552&originWidth=231&originalType=url&ratio=1&rotation=0&showTitle=false&size=68153&status=done&style=none&taskId=u0e8e400f-307d-4c71-94ca-a7ceaf94b8c&title=)](https://link.juejin.cn/?target=https%3A%2F%2Fimg.duicode.com%2Fwp-content%2Fuploads%2F2018%2F01%2Fphp-002.jpeg)
+![](assets/17116088861970.jpg)
+
 从图上可以看到，PHP实现了一个典型的动态语言执行过程：拿到一段代码后，经过词法解析、语法解析等阶段后，源程序会被翻译成一个个指令(opcodes)，然后ZEND虚拟机顺次执行这些指令完成操作。PHP本身是用C实现的，因此最终调用的也都是C的函数，实际上，我们可以把PHP看做是一个C开发的软件。
 PHP的执行的核心是翻译出来的一条一条指令，也即opcode。
 Opcode是PHP程序执行的最基本单位。一个opcode由两个参数(op1,op2)、返回值和处理函数组成。PHP程序最终被翻译为一组opcode处理函数的顺序执行。
@@ -53,7 +56,8 @@ PHP的hash table具有如下特点：
 005.Value支持混合类型：array (“string”, 2332)
 006.支持线性遍历：如foreach
 Zend hash table实现了典型的hash表散列结构，同时通过附加一个双向链表，提供了正向、反向遍历数组的功能。其结构如下图：
-[![image.jpg](https://cdn.nlark.com/yuque/0/2024/png/671402/1705463491757-e1e43185-eda6-4993-8854-9d3f3111abe8.png#averageHue=%23e8dda4&clientId=uf32aeb61-f6ad-4&from=paste&id=u67357aab&originHeight=519&originWidth=558&originalType=url&ratio=1&rotation=0&showTitle=false&size=126582&status=done&style=none&taskId=u114a8391-3fad-4b66-a701-a7614cdad2d&title=)](https://link.juejin.cn/?target=https%3A%2F%2Fimg.duicode.com%2Fwp-content%2Fuploads%2F2018%2F01%2Fphp-003.jpeg)
+![](assets/17116088978494.jpg)
+
 可以看到，在hash table中既有key->value形式的散列结构，也有双向链表模式，使得它能够非常方便的支持快速查找和线性遍历。
 001.散列结构：Zend的散列结构是典型的hash表模型，通过链表的方式来解决冲突。需要注意的是zend的hash table是一个自增长的数据结构，当hash表数目满了之后，其本身会动态以2倍的方式扩容并重新元素位置。初始大小均为8。另外，在进行key->value快速查找时候，zend本身还做了一些优化，通过空间换时间的方式加快速度。比如在每个元素中都会用一个变量nKeyLength标识key的长度以作快速判定。
 002.双向链表：Zend hash table通过一个链表结构，实现了元素的线性遍历。理论上，做遍历使用单向链表就够了，之所以使用双向链表，主要目的是为了快速删除，避免遍历。Zend hash table是一种复合型的结构，作为数组使用时，即支持常见的关联数组也能够作为顺序索引数字来使用，甚至允许2者的混合。
@@ -73,7 +77,8 @@ while (p) {
 ### 6. PHP变量
 PHP是一门弱类型语言，本身不严格区分变量的类型。PHP在变量申明的时候不需要指定类型。PHP在程序运行期间可能进行变量类型的隐示转换。和其他强类型语言一样，程序中也可以进行显示的类型转换。PHP变量可以分为简单类型(int、string、bool)、集合类型(array resource object)和常量(const)。以上所有的变量在底层都是同一种结构 zval。
 Zval是zend中另一个非常重要的数据结构，用来标识并实现PHP变量，其数据结构如下：
-[![image.jpg](https://cdn.nlark.com/yuque/0/2024/png/671402/1705463491758-c42dddab-5f60-4a6b-b601-e4faa935e375.png#averageHue=%23c1bfc5&clientId=uf32aeb61-f6ad-4&from=paste&id=uce3942c0&originHeight=505&originWidth=556&originalType=url&ratio=1&rotation=0&showTitle=false&size=163515&status=done&style=none&taskId=u1c8a855a-cb55-462d-84c1-59888b42592&title=)](https://link.juejin.cn/?target=https%3A%2F%2Fimg.duicode.com%2Fwp-content%2Fuploads%2F2018%2F01%2Fphp-004.jpeg)
+![](assets/17116089125646.jpg)
+
 Zval主要由三部分组成：
 type：指定了变量所述的类型（整数、字符串、数组等）
 refcount&is_ref：用来实现引用计数(后面具体介绍)
