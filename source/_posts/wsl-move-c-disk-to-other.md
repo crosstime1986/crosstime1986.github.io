@@ -1,5 +1,5 @@
 ---
-title: wsl-move-c-disk-to-other
+title: 轻松搬迁！教你如何将WSL从C盘迁移到其他盘区，释放存储空间
 date: 2024-03-28 14:39:43
 tags: 效率
 ---
