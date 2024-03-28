@@ -16,7 +16,7 @@ inject:
 logo:
   icon: /assets/icon.svg
   title: Raymond Leong
-  subtitle: '每个人的独立博客 | Designed by Raymond'
+  subtitle: '我有我的观点 | 每个感受这个世界'
 menubar:
   items: 
     - id: post
@@ -66,3 +66,8 @@ style:
     body: '"LXGW WenKai Screen", system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif'
     code: '"LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
     codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+
+comments:
+  service: beaudar
+  beaudar:
+    repo: xaoxuu/blog-comments
