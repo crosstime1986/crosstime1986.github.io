@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 源空间
+title: 源宇宙
 subtitle: ''
 description: ''
 keywords:
-author: 阿源
+author: AYuan
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://liangzy.me
+url: https://liangzy.me
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:

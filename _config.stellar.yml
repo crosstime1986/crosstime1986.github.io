@@ -16,7 +16,7 @@ inject:
 logo:
   icon: /assets/icon.svg
   title: Raymond Leong
-  subtitle: '我有我的观点 | 每个感受这个世界'
+  subtitle: '我有我的观点 | 每天感受这个世界'
 menubar:
   items: 
     - id: post
