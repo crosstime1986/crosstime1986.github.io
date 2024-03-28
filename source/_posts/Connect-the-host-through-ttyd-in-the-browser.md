@@ -1,7 +1,7 @@
 ---
-title: Connect-the-host-through-ttyd-in-the-browser
+title: 通过 ttyd 在浏览器连接主机
 date: 2024-03-28 21:48:12
-tags:
+tags:  效率
 ---
 
 ttyd 可是个神器，它可以让你在浏览器里连接到主机的终端。比 SSH 连接还多点儿功能。
