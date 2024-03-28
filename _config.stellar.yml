@@ -71,3 +71,8 @@ comments:
   service: beaudar
   beaudar:
     repo: xaoxuu/blog-comments
+
+
+open_graph:
+  enable: true
+  twitter_id: ctpaul_com
