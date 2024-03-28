@@ -15,8 +15,8 @@ inject:
 
 logo:
   icon: /assets/icon.svg
-  title: Stellar
-  subtitle: '每个人的独立博客 | Designed by xaoxuu'
+  title: Raymond Leong
+  subtitle: '每个人的独立博客 | Designed by Raymond'
 menubar:
   items: 
     - id: post
