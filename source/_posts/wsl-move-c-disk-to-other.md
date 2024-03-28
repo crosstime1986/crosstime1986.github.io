@@ -38,4 +38,6 @@ Ubuntu2204 config --default-user cham
 请注意，这里的发行版名称的版本号是纯数字，比如Ubuntu-22.04就是Ubuntu2204。
 这时候再次打开WSL，你会发现一切都恢复正常了。
 
+![](assets/17116083294923.jpg)
+
 大功告成
